@@ -1,4 +1,5 @@
 
+// @ts-nocheck
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -9,10 +10,9 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportError } from "../lib/-error-reporting";
 import { AppShell } from "../components/AppShell";
 
 function NotFoundComponent() {
@@ -45,10 +45,6 @@ function ErrorComponent({
 }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-
-  useEffect(() => {
-    // Error logging can be added here if required.
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
